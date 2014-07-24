@@ -1,0 +1,26 @@
+{
+  "name": "retrofuturisme",
+  "version": "0.0.0",
+  "description": "ascii-invariant mapping from hyperspace to gopherspace",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/6a68/retrofuturisme"
+  },
+  "keywords": [
+    "gopher",
+    "gopherspace"
+  ],
+  "author": "6a68",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/6a68/retrofuturisme/issues"
+  },
+  "homepage": "https://github.com/6a68/retrofuturisme",
+  "dependencies": {
+    "gopher-menudle": "^0.1.1"
+  }
+}
