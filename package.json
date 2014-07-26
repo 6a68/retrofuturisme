@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/6a68/retrofuturisme",
   "dependencies": {
-    "gopher-menudle": "^0.1.1"
+    "gopher-menudle": "git+https://github.com/EvanHahn/gopher-node-menudle.git"
   }
 }
