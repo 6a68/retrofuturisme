@@ -36,9 +36,6 @@ function onError(e, sock) {
 net.createServer(function (socket) {
   socket.setEncoding('ascii');
   socket.on('data', function (data) {
-
-    console.log("the raw data in the socket is " + data);
-
     // XXX extract this into a router function
     // trim those trailing linebreaks to make routing simpler
     var endpoint = data.trim();
@@ -51,10 +48,6 @@ net.createServer(function (socket) {
       var msg = 'Error: attempted to reach endpoint "' + endpoint + '".';
       return onError(msg, socket);
     }
-    console.log('hit ' + endpoint + ' route');
-    console.log('routeMap.endpoint is ' + JSON.stringify(routeMap[endpoint]));
-    console.log('routeMap.endpoint.path is ' + routeMap[endpoint]['path']);
-
     // XXX extract this into an async template loader function
     fs.realpath(routeMap[endpoint]['path'], function(err, resolvedPath) {
       if (err) { return onError(e, socket); }
@@ -71,12 +64,10 @@ net.createServer(function (socket) {
             var linky = ':link ' + routeMap[endpoint]['type'] + ' ' +
                     host + ':' + port + '/' + endpoint + ' ' +
                     routeMap[endpoint]['title'] + '\n';
-            console.log('the link for ' + endpoint + ' is ' + linky);
             contents += linky;
           });
-          console.log(contents);
           page = gopherize(contents);
-        // XXX we might want to template some navigation for html pages
+        // XXX we might want to template some navigation for html pages?
         } else {
           page = contents;
         }
