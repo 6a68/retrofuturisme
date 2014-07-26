@@ -53,25 +53,10 @@ net.createServer(function (socket) {
       if (err) { return onError(e, socket); }
       fs.readFile(resolvedPath, 'ascii', function (err, contents) {
         if (err) { return onError(e, socket); }
-
-        var page = '';
-
-        // XXX extract this bit to a gophermap page templating function
         if (routeMap[endpoint]['type'] == '1') {
-          // add the links. just one level deep for now.
-          Object.keys(routeMap).forEach(function (endpoint) {
-            if (endpoint == 'default') { return; } // don't provide a top-level link
-            var linky = ':link ' + routeMap[endpoint]['type'] + ' ' +
-                    host + ':' + port + '/' + endpoint + ' ' +
-                    routeMap[endpoint]['title'] + '\n';
-            contents += linky;
-          });
-          page = gopherize(contents);
-        // XXX we might want to template some navigation for html pages?
-        } else {
-          page = contents;
+          contents = gopherize(contents);
         }
-        socket.write(page);
+        socket.write(contents);
         socket.end();
       });
     });
