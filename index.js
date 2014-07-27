@@ -22,8 +22,8 @@ var routeMap = {
 };
 
 // XXX move to lib/config.js? or json?
-var port = 7070;
-var host = 'localhost';
+var port = 70;
+var host = '6a68.net';
 
 // TODO send console to syslog
 function onError(e, sock) {
